@@ -68,12 +68,10 @@ function renderStep() {
     otpWrap.style.display = 'flex';
     document.getElementById('otpWarningText').textContent =
       lang === 'hi' ? 'यह OTP किसी को न बताएं' : 'Never share this OTP with anyone';
-    showScamModal(
-      lang === 'hi' ? 'OTP — बेहद जरूरी सूचना' : 'Warning — Never share your OTP',
-      lang === 'hi'
-        ? 'OTP एक गुप्त 6 अंकों का नंबर है। कोई भी सरकारी अधिकारी, बैंक या सहायक कभी भी इसे नहीं मांगेगा। अगर कोई मांगे — वो धोखा है।'
-        : 'Your OTP is a secret 6-digit number. No government officer, bank, or helper will ever ask you for it. If anyone asks — it is a scam.'
-    );
+    // Use scam-guard OTP guardian (Day 4) — full audio + visual warning
+    if (typeof otpGuardian === 'function') {
+      otpGuardian();
+    }
   } else {
     otpWrap.style.display = 'none';
   }
