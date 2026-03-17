@@ -20,37 +20,26 @@ const ASSETS = [
   '/manifest.json'
 ];
 
-// Install — cache all assets
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
-      .then(() => self.skipWaiting())
-  );
-});
+// ---- DEV MODE — no caching, always fetch fresh ----
+// TODO: On Day 7 before submission, remove this line and restore full caching below
+self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
 
-// Activate — clear old caches
-self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
-});
-
-// Fetch — serve from cache first, then network
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request)
-        .then(response => {
-          // Cache new requests dynamically
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
-          return response;
-        })
-        .catch(() => caches.match('/index.html')); // Fallback to index
-    })
-  );
-});
+// ---- PRODUCTION caching (restore on Day 7) ----
+// self.addEventListener('install', e => {
+//   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+// });
+// self.addEventListener('activate', e => {
+//   e.waitUntil(caches.keys().then(keys =>
+//     Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+//   ).then(() => self.clients.claim()));
+// });
+// self.addEventListener('fetch', e => {
+//   e.respondWith(caches.match(e.request).then(cached => {
+//     if (cached) return cached;
+//     return fetch(e.request).then(response => {
+//       const clone = response.clone();
+//       caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+//       return response;
+//     }).catch(() => caches.match('/index.html'));
+//   }));
+// });
