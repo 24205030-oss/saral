@@ -1,0 +1,57 @@
+/* ===========================
+   SARAL — modes.css
+   Accessibility mode overrides
+   =========================== */
+
+/* Large mode — bigger text, larger tap targets */
+body.mode-large {
+  font-size: 20px;
+}
+body.mode-large .hero-title  { font-size: clamp(32px, 7vw, 52px); }
+body.mode-large .mode-card   { padding: 28px 16px; min-height: 140px; }
+body.mode-large .mode-name   { font-size: 18px; }
+body.mode-large .mode-desc   { font-size: 14px; }
+body.mode-large .cta-btn     { padding: 18px 40px; font-size: 20px; }
+body.mode-large .mode-icon   { width: 64px; height: 64px; font-size: 28px; }
+body.mode-large .lang-toggle { padding: 10px 22px; font-size: 16px; }
+
+/* Calm mode — no red, no urgent colours, soft palette */
+body.mode-calm {
+  --coral:      #7A6A5A;
+  --coral-light:#F5F0EB;
+  --red:        #7A6A5A;
+  --red-light:  #F5F0EB;
+  --amber:      #8A7A3A;
+  --amber-light:#F5F2E0;
+}
+body.mode-calm .scam-banner {
+  background: var(--teal-light);
+  color: var(--teal);
+  border-color: var(--teal);
+}
+body.mode-calm .hero-title span { color: var(--teal); }
+body.mode-calm .logo           { color: var(--teal); }
+
+/* High contrast mode */
+body.mode-contrast {
+  --bg:          #000000;
+  --white:       #111111;
+  --text:        #FFFFFF;
+  --text-muted:  #CCCCCC;
+  --border:      #555555;
+  --purple:      #A89EFF;
+  --purple-light:#1A1830;
+  --teal:        #4DDDAA;
+  --teal-light:  #0A2820;
+}
+body.mode-contrast .mode-card { border-width: 2px; }
+body.mode-contrast .cta-btn   { border: 2px solid white; }
+
+/* Voice mode indicator — pulsing ring on active elements */
+body.mode-voice .mode-card.selected {
+  animation: voicePulse 2s ease-in-out infinite;
+}
+@keyframes voicePulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(83,74,183,0.15); }
+  50%       { box-shadow: 0 0 0 8px rgba(83,74,183,0.25); }
+}

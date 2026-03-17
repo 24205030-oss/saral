@@ -1,0 +1,16 @@
+{
+  "name": "SARAL — Accessible Gov Portals",
+  "short_name": "SARAL",
+  "description": "Simplified Adaptive Interface Assistive Layer for government portals",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#F8F7F3",
+  "theme_color": "#534AB7",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["accessibility", "government", "utilities"],
+  "lang": "en-IN"
+}

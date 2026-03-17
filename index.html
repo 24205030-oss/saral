@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#534AB7"/>
+  <meta name="description" content="SARAL — Simplified Adaptive Interface Assistive Layer for government portals"/>
+  <title>SARAL — Accessible Gov Portals</title>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+  <link rel="stylesheet" href="styles/modes.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">SAR<span>AL</span></div>
+      <div class="tagline" id="tagline">Accessible Government Portals</div>
+    </div>
+    <div class="header-right">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+        <span id="langLabel">हिंदी</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="main">
+    <section class="hero">
+      <div class="hero-badge" id="heroBadge">Government Portal Assistant</div>
+      <h1 class="hero-title" id="heroTitle">Government forms,<br><span>made simple.</span></h1>
+      <p class="hero-desc" id="heroDesc">
+        SARAL helps people with disabilities fill government forms safely —
+        step by step, in plain language, with protection from scams.
+      </p>
+
+      <!-- Mode selector -->
+      <div class="mode-section">
+        <p class="mode-label" id="modeLabel">How would you like help?</p>
+        <div class="mode-grid">
+
+          <button class="mode-card" id="mode-simple" onclick="selectMode('simple')" aria-label="Simple words mode">
+            <div class="mode-icon">A</div>
+            <div class="mode-name" id="modeSimpleName">Simple Words</div>
+            <div class="mode-desc" id="modeSimpleDesc">Plain language, one step at a time</div>
+          </button>
+
+          <button class="mode-card" id="mode-voice" onclick="selectMode('voice')" aria-label="Voice mode">
+            <div class="mode-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+              </svg>
+            </div>
+            <div class="mode-name" id="modeVoiceName">Voice Mode</div>
+            <div class="mode-desc" id="modeVoiceDesc">Listen to questions, speak answers</div>
+          </button>
+
+          <button class="mode-card" id="mode-large" onclick="selectMode('large')" aria-label="Large buttons mode">
+            <div class="mode-icon" style="font-size:28px; font-weight:700;">T</div>
+            <div class="mode-name" id="modeLargeName">Large Buttons</div>
+            <div class="mode-desc" id="modeLargeDesc">Bigger text and buttons</div>
+          </button>
+
+          <button class="mode-card" id="mode-calm" onclick="selectMode('calm')" aria-label="Calm mode">
+            <div class="mode-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+              </svg>
+            </div>
+            <div class="mode-name" id="modeCalmName">Calm Mode</div>
+            <div class="mode-desc" id="modeCalmDesc">No alerts, gentle guidance</div>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <button class="cta-btn" id="ctaBtn" onclick="startSaral()" disabled>
+        <span id="ctaText">Select a mode to begin</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Scam warning banner -->
+      <div class="scam-banner" id="scamBanner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span id="scamBannerText">Government portals never ask for money. SARAL protects you from scams.</span>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section">
+      <h2 class="section-title" id="howTitle">How SARAL works</h2>
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text" id="step1Text">Choose your mode</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text" id="step2Text">Answer one question at a time</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text" id="step3Text">SARAL protects and guides you</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-text" id="step4Text">Form submitted successfully</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Available portals -->
+    <section class="portals-section">
+      <h2 class="section-title" id="portalsTitle">Available government forms</h2>
+      <div class="portals-grid">
+        <div class="portal-card available" onclick="goToForm('disability-pension')">
+          <div class="portal-name" id="portal1Name">Disability Pension</div>
+          <div class="portal-dept">NSAP — Ministry of Rural Development</div>
+          <div class="portal-badge">Available</div>
+        </div>
+        <div class="portal-card coming">
+          <div class="portal-name">DigiLocker Registration</div>
+          <div class="portal-dept">Ministry of Electronics and IT</div>
+          <div class="portal-badge coming-badge">Coming soon</div>
+        </div>
+        <div class="portal-card coming">
+          <div class="portal-name">PM-KISAN Enrollment</div>
+          <div class="portal-dept">Ministry of Agriculture</div>
+          <div class="portal-badge coming-badge">Coming soon</div>
+        </div>
+        <div class="portal-card coming">
+          <div class="portal-name">e-Shram Registration</div>
+          <div class="portal-dept">Ministry of Labour</div>
+          <div class="portal-badge coming-badge">Coming soon</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div id="footerText">Built for India's 26 million disabled citizens · SARAL v1.0 · RPwD Act 2016 compliant</div>
+  </footer>
+
+  <script src="lang/strings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{
+  "disability-pension": {
+    "id": "disability-pension",
+    "title_en": "Disability Pension Application",
+    "title_hi": "विकलांगता पेंशन आवेदन",
+    "dept_en": "NSAP — Ministry of Rural Development",
+    "dept_hi": "NSAP — ग्रामीण विकास मंत्रालय",
+    "steps": [
+      {
+        "id": "name",
+        "question_en": "What is your full name?",
+        "question_hi": "आपका पूरा नाम क्या है?",
+        "help_en": "Enter your name exactly as it appears on your Aadhaar card.",
+        "help_hi": "अपना नाम वैसे ही लिखें जैसा आपके आधार कार्ड पर है।",
+        "example_en": "Example: Sunita Ramesh Pawar",
+        "example_hi": "उदाहरण: सुनीता रमेश पवार",
+        "type": "text",
+        "placeholder_en": "Type your full name",
+        "placeholder_hi": "अपना पूरा नाम लिखें",
+        "required": true,
+        "otp_field": false
+      },
+      {
+        "id": "aadhaar",
+        "question_en": "What is your 12-digit Aadhaar number?",
+        "question_hi": "आपका 12 अंकों का आधार नंबर क्या है?",
+        "help_en": "Your Aadhaar number is printed on your Aadhaar card. It has 12 numbers.",
+        "help_hi": "आपका आधार नंबर आपके आधार कार्ड पर छपा है। इसमें 12 अंक होते हैं।",
+        "example_en": "Example: 9876 5432 1098",
+        "example_hi": "उदाहरण: 9876 5432 1098",
+        "type": "text",
+        "placeholder_en": "Enter 12 digits",
+        "placeholder_hi": "12 अंक दर्ज करें",
+        "required": true,
+        "otp_field": false
+      },
+      {
+        "id": "disability_type",
+        "question_en": "What type of disability do you have?",
+        "question_hi": "आपको किस प्रकार की विकलांगता है?",
+        "help_en": "Choose the option that best describes your condition from your disability certificate.",
+        "help_hi": "अपने विकलांगता प्रमाणपत्र के अनुसार सही विकल्प चुनें।",
+        "example_en": "",
+        "example_hi": "",
+        "type": "select",
+        "options_en": ["-- Choose your disability type --", "Intellectual disability", "Cerebral palsy", "Autism spectrum", "Mental illness", "Visual impairment", "Hearing impairment", "Other physical disability"],
+        "options_hi": ["-- अपनी विकलांगता चुनें --", "बौद्धिक विकलांगता", "सेरेब्रल पाल्सी", "ऑटिज़्म", "मानसिक रोग", "दृष्टि बाधा", "श्रवण बाधा", "अन्य शारीरिक विकलांगता"],
+        "required": true,
+        "otp_field": false
+      },
+      {
+        "id": "bank_account",
+        "question_en": "What is your bank account number?",
+        "question_hi": "आपका बैंक खाता नंबर क्या है?",
+        "help_en": "Your pension money will be sent to this account. Find it in your bank passbook on the first page.",
+        "help_hi": "पेंशन का पैसा इस खाते में आएगा। यह आपकी बैंक पासबुक के पहले पेज पर मिलेगा।",
+        "example_en": "Example: 3456789012345",
+        "example_hi": "उदाहरण: 3456789012345",
+        "type": "text",
+        "placeholder_en": "Enter bank account number",
+        "placeholder_hi": "बैंक खाता नंबर दर्ज करें",
+        "required": true,
+        "otp_field": false
+      },
+      {
+        "id": "ifsc",
+        "question_en": "What is the IFSC code of your bank branch?",
+        "question_hi": "आपके बैंक की शाखा का IFSC कोड क्या है?",
+        "help_en": "IFSC code tells the system which bank branch your account is in. Find it in your passbook. It has 11 letters and numbers.",
+        "help_hi": "IFSC कोड बताता है कि आपका खाता किस बैंक शाखा में है। यह आपकी पासबुक में मिलेगा। इसमें 11 अक्षर और अंक होते हैं।",
+        "example_en": "Example: SBIN0001234",
+        "example_hi": "उदाहरण: SBIN0001234",
+        "type": "text",
+        "placeholder_en": "Example: SBIN0001234",
+        "placeholder_hi": "उदाहरण: SBIN0001234",
+        "required": true,
+        "otp_field": false
+      },
+      {
+        "id": "otp",
+        "question_en": "Enter the OTP sent to your mobile",
+        "question_hi": "अपने मोबाइल पर आया OTP दर्ज करें",
+        "help_en": "OTP is a 6-digit number sent by the government to your mobile. Enter it here to verify your identity. NEVER share this OTP with anyone.",
+        "help_hi": "OTP एक 6 अंकों का नंबर है जो सरकार ने आपके मोबाइल पर भेजा है। इसे यहाँ डालें। यह OTP किसी को भी न बताएं।",
+        "example_en": "Example: 485921",
+        "example_hi": "उदाहरण: 485921",
+        "type": "text",
+        "placeholder_en": "Enter 6-digit OTP",
+        "placeholder_hi": "6 अंकों का OTP दर्ज करें",
+        "required": true,
+        "otp_field": true
+      }
+    ]
+  }
+}
